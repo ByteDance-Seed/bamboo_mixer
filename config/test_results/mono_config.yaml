@@ -1,0 +1,27 @@
+# config for testing
+ckpt_path: "<path to the checkpoint folder>/optimal.pt" # Model checkpoint path
+save_dir: "<path to your data folder>" # Testing data path
+output_path: "<path to your output folder>/output_mono.json" # Output data path
+data_cls: "MonoData"
+key_map:
+  temperature: "temperature"
+
+model:
+  graph_block:
+    feature_layer:
+      atom_embedding_dim: 16
+      node_mlp_dims: [32, 32, 2]  # (hidden, out, layers)
+      edge_mlp_dims: [32, 32, 2]  # (hidden, out, layers)
+      act: gelu
+    gnn_layer:
+      gnn_type: EGT
+      gnn_dims: [32, 32, 3]  # (hidden, out, layers)
+      jk: cat
+      act: gelu
+      heads: 4
+      at_channels: 8
+      ffn_dims: [32, 2]  # (hidden, layers)
+  readout_block:
+    input_dim: 64
+    hidden_dims: [256, 128, 16]
+    output_dim: 1  

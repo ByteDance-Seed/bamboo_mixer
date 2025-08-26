@@ -1,0 +1,90 @@
+ckpt_path: "<path to the checkpoint folder>"
+output_dir: "<path to your output folder>"
+num_batch: 2
+batch_size: 128
+temperature: 25
+concentration: 0.1
+conductivities: [5.0, 10.0, 30.0]
+anion_ratios: [0.3, 0.5, 0.7]
+
+diffusion_config:
+  model_config:
+    unet1d_config:
+      dim: 64                 
+      prop_dim: 2           
+      dim_mults: [1, 2, 4, 8]      
+      channels: 1                 
+      dropout: 0.0                 
+      self_condition: False         
+      learned_variance: False      
+      learned_sinusoidal_cond: False  
+      random_fourier_features: False  
+      learned_sinusoidal_dim: 16    
+      sinusoidal_pos_emb_theta: 10000  
+      attn_dim_head: 16           
+      attn_heads: 4                 
+      condition_method: concat 
+    beta_scheduler_config:
+      timesteps: 1000
+      scheduler_mode: cosine
+    sigma_scheduler_config:
+      timesteps: 1000
+    diff_config:
+      time_dim: 256
+
+
+decoder_config:
+  model_config:
+    formula_emb_dim: 384
+    set_transformer_block: 
+      hidden_dim: 64
+      max_num_mol: 12
+      num_layers: 2
+    aggr_block:
+      node_emb_dim: 32
+      node_att_dim: 32
+      edge_emb_dim: 32
+      edge_att_dim: 32
+    mol_dict:
+      solv_dict_path: "emb_dict/solv_embs.pt"
+      salt_dict_path: "emb_dict/salt_embs.pt"
+
+
+predictor_config:
+  dict_dir: "emb_dict" # Testing data path
+  model_config:
+    pretrain:
+      model:
+        graph_block:
+          feature_layer:
+            atom_embedding_dim: 16
+            node_mlp_dims: [32, 32, 2]  # (hidden, out, layers)
+            edge_mlp_dims: [32, 32, 2]  # (hidden, out, layers)
+            act: gelu
+          gnn_layer:
+            gnn_type: EGT
+            gnn_dims: [32, 32, 3]  # (hidden, out, layers)
+            jk: cat
+            act: gelu
+            heads: 4
+            at_channels: 8
+            ffn_dims: [32, 2]  # (hidden, layers)
+        readout_block:
+          input_dim: 64
+          hidden_dims: [256, 128, 16]
+          output_dim: 1  
+
+    model:
+      aggr_block:
+        node_emb_dim: 32
+        node_att_dim: 32
+        edge_emb_dim: 32
+        edge_att_dim: 32
+      readout_block:
+        input_dim: 384
+        hidden_dims: [512, 128, 16]
+        output_dim: 1
+      anion_block:
+        input_dim: 400
+        hidden_dims: [512, 128, 16]
+        output_dim: 1

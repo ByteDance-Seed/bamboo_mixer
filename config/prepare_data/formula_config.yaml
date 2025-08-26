@@ -1,0 +1,8 @@
+json_path: "<path to your data folder>/data.json"
+save_dir: "<path to your data folder>"
+
+
+data_cls: FormulaData
+key_map:  
+  concentration: salt_molar_ratio # concentration of the Li salt
+  temperature: temperature # temperature of conductivity and anion ratio measurement

@@ -1,0 +1,15 @@
+ase==3.22.1 
+einops==0.8.1 
+h5py==3.10.0 
+matplotlib==3.8.3 
+networkx==3.2.1
+numpy==1.26.2
+packaging==24.0
+pandas==2.2.1 
+Pillow==9.3.0 
+PyYAML==6.0.1 
+rdkit==2023.9.6 
+scikit-learn==1.5.2 
+torch==2.1.0
+torch-geometric==2.6.1 
+tqdm==4.66.5 

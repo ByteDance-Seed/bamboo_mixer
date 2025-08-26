@@ -1,0 +1,9 @@
+json_path: "<path to your data folder>/data.json"
+save_dir: "<path to your data folder>"
+
+data_cls: MonoData
+# input feature
+key_map:  
+  temperature: temperature # temperature of the molecular property
+
+

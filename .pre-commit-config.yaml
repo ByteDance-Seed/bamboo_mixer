@@ -1,0 +1,24 @@
+# Install pre-commit by https://pre-commit.com/
+repos:
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args: [
+            "--disable=R,C,W,no-member,c-extension-no-member",
+            "-sn", # Don't display the score
+          ]
+      - id: isort
+        name: isort (python)
+        entry: isort
+        language: system
+        types: [python]
+      - id: yapf
+        name: yapf
+        entry: yapf
+        language: system
+        types: [python]
+        args: ["--in-place"]

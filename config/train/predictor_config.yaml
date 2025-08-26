@@ -1,0 +1,79 @@
+# config for train 
+
+meta:
+  work_folder: "<path to your output folder>"
+  random_seed: 123
+  fp64: false
+  print_grad: false
+  save_debug_data: false
+
+dataset:
+  - config:  "<path to your train data folder>/dataset_config.yaml"
+    batch_size: 512
+    shuffle: true
+    train_ratio: 0.7
+    loss_weight: 1.0
+    loss:
+      - loss_type: conductivity_MAE
+        weight: 100.0
+      - loss_type: anion_ratio_MAE
+        weight: 1.0
+
+model:
+  pretrain:
+    ckpt_path: "<path to your checkpoint folder>/pretrain.pt"
+    model_config:
+      graph_block:
+        feature_layer:
+          atom_embedding_dim: 16
+          node_mlp_dims: [32, 32, 2]  # (hidden, out, layers)
+          edge_mlp_dims: [32, 32, 2]  # (hidden, out, layers)
+          act: gelu
+        gnn_layer:
+          gnn_type: EGT
+          gnn_dims: [32, 32, 3]  # (hidden, out, layers)
+          jk: cat
+          act: gelu
+          heads: 4
+          at_channels: 8
+          ffn_dims: [32, 2]  # (hidden, layers)
+      readout_block:
+        input_dim: 64
+        hidden_dims: [256, 128, 16]
+        output_dim: 1  
+      
+  model:
+    aggr_block:
+      node_emb_dim: 32
+      node_att_dim: 32
+      edge_emb_dim: 32
+      edge_att_dim: 32
+    readout_block:
+      input_dim: 384
+      hidden_dims: [512, 128, 16]
+      output_dim: 1
+    anion_block:
+      input_dim: 400
+      hidden_dims: [512, 128, 16]
+      output_dim: 1
+
+
+training:
+  valid_interval: 2
+  ckpt_interval: 100
+
+  max_epoch: 1999
+  
+  optimizer:
+    type: RAdam
+    lr: 1.0e-03
+  scheduler:
+    type: ReduceLROnPlateau
+    factor: 0.9
+    patience: 3
+    threshold_mode: abs
+    threshold: 1.0e-06
+    min_lr: 1.0e-07
+
+  early_stop_patience: 20
+  ignore_tolerance: 1.0e-06

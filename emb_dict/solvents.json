@@ -1,0 +1,312 @@
+[
+    {
+        "name": "PC",
+        "smiles": "CC1COC(=O)O1",
+        "temperature": 25
+    },
+    {
+        "name": "DEC",
+        "smiles": "CCOC(=O)OCC",
+        "temperature": 25
+    },
+    {
+        "name": "EC",
+        "smiles": "O=C1OCCO1",
+        "temperature": 25
+    },
+    {
+        "name": "EMC",
+        "smiles": "CCOC(=O)OC",
+        "temperature": 25
+    },
+    {
+        "name": "TFP",
+        "smiles": "O=P(OCC(F)(F)F)(OCC(F)(F)F)OCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "EA",
+        "smiles": "CCOC(C)=O",
+        "temperature": 25
+    },
+    {
+        "name": "EFA",
+        "smiles": "CCOC(=O)CF",
+        "temperature": 25
+    },
+    {
+        "name": "DMC",
+        "smiles": "COC(=O)OC",
+        "temperature": 25
+    },
+    {
+        "name": "MA",
+        "smiles": "COC(C)=O",
+        "temperature": 25
+    },
+    {
+        "name": "Glyme",
+        "smiles": "COCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "t_BC",
+        "smiles": "C[C@@H]1OC(=O)O[C@H]1C",
+        "temperature": 25
+    },
+    {
+        "name": "2-MeTHF",
+        "smiles": "CC1CCCO1",
+        "temperature": 25
+    },
+    {
+        "name": "FEC",
+        "smiles": "O=C1OCC(F)O1",
+        "temperature": 25
+    },
+    {
+        "name": "BUTY",
+        "smiles": "O=C1CCCO1",
+        "temperature": 25
+    },
+    {
+        "name": "Sulfolane",
+        "smiles": "O=S1(=O)CCCC1",
+        "temperature": 25
+    },
+    {
+        "name": "Triglyme",
+        "smiles": "COCCOCCOCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "Tetraglyme",
+        "smiles": "COCCOCCOCCOCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "Diglyme",
+        "smiles": "COCCOCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "AN",
+        "smiles": "CC#N",
+        "temperature": 25
+    },
+    {
+        "name": "TESA",
+        "smiles": "CCN(CC)S(=O)(=O)N(CC)CC",
+        "temperature": 25
+    },
+    {
+        "name": "EM",
+        "smiles": "COC(=O)OCCOC(=O)OC",
+        "temperature": 25
+    },
+    {
+        "name": "PM",
+        "smiles": "COC(=O)OCCCOC(=O)OC",
+        "temperature": 25
+    },
+    {
+        "name": "EE",
+        "smiles": "CCOC(=O)OCCOC(=O)OCC",
+        "temperature": 25
+    },
+    {
+        "name": "PE",
+        "smiles": "CCOC(=O)OCCCOC(=O)OCC",
+        "temperature": 25
+    },
+    {
+        "name": "THF",
+        "smiles": "C1CCOC1",
+        "temperature": 25
+    },
+    {
+        "name": "DMM",
+        "smiles": "COCOC",
+        "temperature": 25
+    },
+    {
+        "name": "DEE",
+        "smiles": "CCOCCOCC",
+        "temperature": 25
+    },
+    {
+        "name": "DEM",
+        "smiles": "CCOCOCC",
+        "temperature": 25
+    },
+    {
+        "name": "DOL",
+        "smiles": "C1COCO1",
+        "temperature": 25
+    },
+    {
+        "name": "DMS",
+        "smiles": "COS(=O)OC",
+        "temperature": 25
+    },
+    {
+        "name": "2FEA",
+        "smiles": "CC(=O)OCCF",
+        "temperature": 25
+    },
+    {
+        "name": "alpha-F-GBL",
+        "smiles": "O=C1OCCC1F",
+        "temperature": 25
+    },
+    {
+        "name": "beta-F-GBL",
+        "smiles": "O=C1CC(F)CO1",
+        "temperature": 25
+    },
+    {
+        "name": "PFPN",
+        "smiles": "CCOP1(F)=NP(F)(F)=NP(F)(F)=N1",
+        "temperature": 25
+    },
+    {
+        "name": "FDMB",
+        "smiles": "COCC(F)(F)C(F)(F)COC",
+        "temperature": 25
+    },
+    {
+        "name": "F3DEE",
+        "smiles": "CCOCCOCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "F6DEE",
+        "smiles": "FC(F)(F)COCCOCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "F4DEE",
+        "smiles": "FC(F)COCCOCC(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "F5DEE",
+        "smiles": "FC(F)COCCOCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "DEG-FTEG",
+        "smiles": "COCCOCCOCC(F)(F)OC(F)(F)C(F)(F)OC(F)(F)C(F)(F)OC(F)(F)COCCOCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "DME-FTEG",
+        "smiles": "COCCOCC(F)(F)OC(F)(F)C(F)(F)OC(F)(F)C(F)(F)OC(F)(F)COCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "DEG-FTriG",
+        "smiles": "COCCOCCOCC(F)(F)OC(F)(F)C(F)(F)OC(F)(F)COCCOCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "DME-FTriEG",
+        "smiles": "COCCOCC(F)(F)OC(F)(F)C(F)(F)OC(F)(F)COCCOC",
+        "temperature": 25
+    },
+    {
+        "name": "TMP",
+        "smiles": "COP(=O)(OC)OC",
+        "temperature": 25
+    },
+    {
+        "name": "PhCF3",
+        "smiles": "FC(F)(F)c1ccccc1",
+        "temperature": 25
+    },
+    {
+        "name": "MTFA",
+        "smiles": "COC(=O)C(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "FEBFP",
+        "smiles": "O=P(OCCOCC(F)(F)F)(OCC(F)(F)F)OCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "EBFP",
+        "smiles": "CCOCCOP(=O)(OCC(F)(F)F)OCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "DEBFP",
+        "smiles": "COCCOCCOP(=O)(OCC(F)(F)F)OCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "BFEFP",
+        "smiles": "O=P(OCCOCC(F)(F)F)(OCCOCC(F)(F)F)OCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "D2",
+        "smiles": "FC(F)C(F)(F)OCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "DTF",
+        "smiles": "O=S(=O)(OCC(F)F)C(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "DFDEC",
+        "smiles": "CCOC(=O)OCC(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "DCEP",
+        "smiles": "CCCOP(=O)(CCC#N)OCC",
+        "temperature": 25
+    },
+    {
+        "name": "TTE",
+        "smiles": "C(F)(F)C(F)(F)COC(F)(F)C(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "EMP",
+        "smiles": "COCCCOCC",
+        "temperature": 25
+    },
+    {
+        "name": "F1EMP",
+        "smiles": "COCCCOCCF",
+        "temperature": 25
+    },
+    {
+        "name": "F2EMP",
+        "smiles": "COCCCOCC(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "F3EMP",
+        "smiles": "COCCCOCC(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "EP",
+        "smiles": "CCC(=O)OCC",
+        "temperature": 25
+    },
+    {
+        "name": "VC",
+        "smiles": "C1=COC(=O)O1",
+        "temperature": 25
+    },
+    {
+        "name": "MF",
+        "smiles": "COC=O",
+        "temperature": 25
+    }
+]

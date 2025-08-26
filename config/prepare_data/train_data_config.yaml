@@ -1,0 +1,12 @@
+json_path: "<path to your data folder>/data.json"
+save_dir: "<path to your data folder>"
+
+data_cls: FormulaData
+key_map:  
+  concentration: salt_molar_ratio
+  temperature: temperature
+  # Property to predict
+  conductivity: conductivity 
+  conductivity_mask: conductivity_mask # whether the label exists or not. # True if label exists, False if missing
+  anion_ratio: anion_ratio
+  anion_ratio_mask: anion_ratio_mask
