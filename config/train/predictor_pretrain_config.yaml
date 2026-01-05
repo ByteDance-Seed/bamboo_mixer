@@ -1,0 +1,84 @@
+# config for train
+
+meta:
+  work_folder: "run/formula/pretrain_md_wd"
+  random_seed: 123
+  fp64: false
+  print_grad: false
+  save_debug_data: false
+
+dataset:
+  - config: "run/formula/pretrain_md_preprocess/dataset_config.yaml"
+    batch_size: 1024
+    num_workers: 2 # tune for training performance
+    prefetch_factor: 4 # tune for training performance
+    shuffle: true
+    train_ratio: 0.7
+    loss_weight: 1.0
+    loss:
+      - loss_type: conductivity_ne_MAE
+        weight: 1.0
+      - loss_type: conductivity_pred_MAE
+        weight: 1.0
+      - loss_type: anion_ratio_MAE
+        weight: 1.0
+
+model:
+  model_type: predictor
+  train_mode: pretrain
+  mono:
+    ckpt_path: "run/mono/optimal.pt" # trained mono model
+    model_config:
+      graph_block:
+        feature_layer:
+          atom_embedding_dim: 16
+          node_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+          edge_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+          act: gelu
+        gnn_layer:
+          gnn_type: EGT
+          gnn_dims: [32, 32, 3] # (hidden, out, layers)
+          jk: cat
+          act: gelu
+          heads: 4
+          at_channels: 8
+          ffn_dims: [32, 2] # (hidden, layers)
+      readout_block:
+        input_dim: 64
+        hidden_dims: [256, 128, 16]
+        output_dim: 1
+
+  formula:
+    aggr_block:
+      node_emb_dim: 32
+      node_att_dim: 32
+      edge_emb_dim: 32
+      edge_att_dim: 32
+    readout_block:
+      input_dim: 384
+      hidden_dims: [512, 128, 16]
+      output_dim: 1
+    anion_block:
+      input_dim: 400
+      hidden_dims: [512, 128, 16]
+      output_dim: 1
+
+training:
+  valid_interval: 2
+  ckpt_interval: 100
+
+  max_epoch: 299
+
+  optimizer:
+    type: RAdam
+    lr: 2.0e-03
+  scheduler:
+    type: ReduceLROnPlateau
+    factor: 0.75
+    patience: 5
+    threshold_mode: abs
+    threshold: 1.0e-06
+    min_lr: 1.0e-07
+
+  early_stop_patience: 20
+  ignore_tolerance: 1.0e-06

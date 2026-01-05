@@ -1,0 +1,11 @@
+json_path: "run/formula_pretrain_md_data.json"
+save_dir: "run/formula/pretrain_md_preprocess"
+
+key_map: # extract which datatsets (values) from hdf5 and pass to `data_cls` (keys)
+  concentration: salt_molar_ratio
+  temperature: temperature
+  conductivity_ne: conductivity_ne
+  conductivity_pred: conductivity_mistry
+  anion_ratio: anion_ratio
+kwargs: # additional kwargs for `data_cls`
+  include_emb: False

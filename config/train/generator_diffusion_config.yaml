@@ -1,0 +1,60 @@
+# config for train
+
+meta:
+  work_folder: "run/train_diffusion"
+  random_seed: 123
+  fp64: false
+  print_grad: false
+  save_debug_data: false
+
+dataset:
+  - config: "run/diffusion/train_preprocess/dataset_config.yaml"
+    batch_size: 256
+    shuffle: true
+    train_ratio: 0.7
+    loss_weight: 1.0
+    loss:
+      - loss_type: diff_MSE
+        weight: 1.0
+
+model:
+  model_type: diffusion
+  diffusion_model_config:
+    unet1d_config:
+      dim: 64
+      prop_dim: 2
+      dim_mults: [1, 2, 4, 8]
+      channels: 1
+      dropout: 0.0
+      self_condition: False
+      learned_variance: False
+      learned_sinusoidal_cond: False
+      random_fourier_features: False
+      learned_sinusoidal_dim: 16
+      sinusoidal_pos_emb_theta: 10000
+      attn_dim_head: 16
+      attn_heads: 4
+      condition_method: concat
+    beta_scheduler_config:
+      timesteps: 1000
+      scheduler_mode: cosine
+
+training:
+  valid_interval: 2
+  ckpt_interval: 100
+
+  max_epoch: 1999
+
+  optimizer:
+    type: RAdam
+    lr: 1.0e-03
+  scheduler:
+    type: ReduceLROnPlateau
+    factor: 0.9
+    patience: 3
+    threshold_mode: abs
+    threshold: 1.0e-06
+    min_lr: 1.0e-07
+
+  early_stop_patience: 20
+  ignore_tolerance: 1.0e-06

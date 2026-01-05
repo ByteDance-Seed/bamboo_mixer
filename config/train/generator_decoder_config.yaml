@@ -1,0 +1,57 @@
+# config for train
+
+meta:
+  work_folder: "run/train_decoder"
+  random_seed: 123
+  fp64: false
+  print_grad: false
+  save_debug_data: false
+
+dataset:
+  - config: "run/diffusion/train_preprocess/dataset_config.yaml"
+    batch_size: 256
+    shuffle: true
+    train_ratio: 0.7
+    loss_weight: 1.0
+    loss:
+      - loss_type: bow_BCE
+        weight: 1.0
+      - loss_type: bow_MAE
+        weight: 0.0
+
+model:
+  model_type: decoder
+  decoder_model_config:
+    formula_emb_dim: 384
+    set_transformer_block:
+      hidden_dim: 64
+      max_num_mol: 12
+      num_layers: 2
+    aggr_block:
+      node_emb_dim: 32
+      node_att_dim: 32
+      edge_emb_dim: 32
+      edge_att_dim: 32
+    mol_dict:
+      solv_dict_path: "run/diffusion/synthetic_preprocess/solv_embs.pt"
+      salt_dict_path: "run/diffusion/synthetic_preprocess/salt_embs.pt"
+
+training:
+  valid_interval: 2
+  ckpt_interval: 100
+
+  max_epoch: 999
+
+  optimizer:
+    type: RAdam
+    lr: 5.0e-04
+  scheduler:
+    type: ReduceLROnPlateau
+    factor: 0.9
+    patience: 3
+    threshold_mode: abs
+    threshold: 1.0e-06
+    min_lr: 1.0e-07
+
+  early_stop_patience: 20
+  ignore_tolerance: 1.0e-06

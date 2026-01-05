@@ -1,0 +1,6 @@
+json_path: "run/formula_inference.json"
+save_dir: "run/formula/inference_preprocess"
+
+key_map:
+  concentration: salt_molar_ratio # concentration of the Li salt
+  temperature: temperature # temperature of conductivity and anion ratio measurement

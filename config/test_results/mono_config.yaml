@@ -1,0 +1,27 @@
+# config for testing
+ckpt_path: "run/mono/optimal.pt" # Model checkpoint path
+min_max_values: "run/mono/preprocess/min_max_values.json" # min-max values used to train the model ckpt
+save_dir: "run/mono/inference_preprocess" # Testing data path
+output_path: "run/mono/test_results/output_mono.json" # Output data path
+key_map:
+  temperature: "temperature"
+
+model:
+  graph_block:
+    feature_layer:
+      atom_embedding_dim: 16
+      node_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+      edge_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+      act: gelu
+    gnn_layer:
+      gnn_type: EGT
+      gnn_dims: [32, 32, 3] # (hidden, out, layers)
+      jk: cat
+      act: gelu
+      heads: 4
+      at_channels: 8
+      ffn_dims: [32, 2] # (hidden, layers)
+  readout_block:
+    input_dim: 64
+    hidden_dims: [256, 128, 16]
+    output_dim: 1

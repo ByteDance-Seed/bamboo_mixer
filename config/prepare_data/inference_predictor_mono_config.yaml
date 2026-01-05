@@ -1,0 +1,7 @@
+json_path: "run/mono_inference.json" # inference example
+save_dir: "run/mono/inference_preprocess"
+
+# For inference properties of a single molecule, this key_map will be just temperature
+key_map:
+  temperature: temperature # temperature of the molecular property
+

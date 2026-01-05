@@ -1,0 +1,12 @@
+json_path: "run/formula_finetune_data.json"
+save_dir: "run/formula/finetune_preprocess"
+
+key_map: # extract which datatsets (values) from hdf5 and pass to `data_cls` (keys)
+  concentration: salt_molar_ratio
+  temperature: temperature
+  conductivity: conductivity
+  conductivity_mask: conductivity_mask
+  anion_ratio: anion_ratio
+  anion_ratio_mask: anion_ratio_mask
+kwargs: # additional kwargs for `data_cls`
+  include_emb: False

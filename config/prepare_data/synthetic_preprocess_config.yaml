@@ -1,0 +1,9 @@
+json_path: "run/synthetic_data.json"
+save_dir: "run/diffusion/synthetic_preprocess/"
+key_map: # extract which datatsets (values) from hdf5 and pass to `data_cls` (keys)
+  concentration: salt_molar_ratio
+  temperature: temperature
+  conductivity: conductivity
+  anion_ratio: anion_ratio
+kwargs: # additional kwargs for `data_cls`
+  include_emb: False

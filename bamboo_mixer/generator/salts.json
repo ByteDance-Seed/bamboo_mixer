@@ -1,0 +1,12 @@
+[
+    {
+        "name": "LiPF6",
+        "smiles": "F[P-](F)(F)(F)(F)F",
+        "temperature": 25
+    },
+    {
+        "name": "LiFSI",
+        "smiles": "O=S(=O)(F)[N-]S(=O)(=O)F",
+        "temperature": 25
+    }
+]

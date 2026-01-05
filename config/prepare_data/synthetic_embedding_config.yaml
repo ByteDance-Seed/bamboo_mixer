@@ -1,0 +1,47 @@
+dataset:
+  config: "run/diffusion/synthetic_preprocess/dataset_config.yaml"
+  batch_size: 256
+  prefetch_factor: 2
+  num_workers: 1
+
+# embedding.h5, salt_embs.pt, solv_embs.pt are written to this file
+output_folder: "run/diffusion/synthetic_preprocess/"
+
+model:
+  ckpt_path: "run/formula/optimal.pt" # trained formula model
+  mono:
+    ckpt_path: "run/mono/optimal.pt" # trained mono model
+    model_config:
+      graph_block:
+        feature_layer:
+          atom_embedding_dim: 16
+          node_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+          edge_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+          act: gelu
+        gnn_layer:
+          gnn_type: EGT
+          gnn_dims: [32, 32, 3] # (hidden, out, layers)
+          jk: cat
+          act: gelu
+          heads: 4
+          at_channels: 8
+          ffn_dims: [32, 2] # (hidden, layers)
+      readout_block:
+        input_dim: 64
+        hidden_dims: [256, 128, 16]
+        output_dim: 1
+
+  formula:
+    aggr_block:
+      node_emb_dim: 32
+      node_att_dim: 32
+      edge_emb_dim: 32
+      edge_att_dim: 32
+    readout_block:
+      input_dim: 384
+      hidden_dims: [512, 128, 16]
+      output_dim: 1
+    anion_block:
+      input_dim: 400
+      hidden_dims: [512, 128, 16]
+      output_dim: 1

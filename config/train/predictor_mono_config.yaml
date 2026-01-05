@@ -1,0 +1,81 @@
+# config for train
+
+meta:
+  work_folder: "run/mono/wd"
+  random_seed: 42
+  fp64: false
+  print_grad: false
+  save_debug_data: false
+
+dataset:
+  - config: "run/mono/preprocess/dataset_config.yaml"
+    # data_num: 1000 # use the first 1000 items for quick test. remove this if train a full model.
+    batch_size: 512 # increase to 512 or larger for the full model
+    num_workers: 2 # tune for training performance
+    prefetch_factor: 2 # tune for training performance
+    shuffle: true
+    train_ratio: 0.7
+    loss_weight: 1.0
+    loss:
+      - loss_type: Tm_MSE
+        weight: 1.0
+      - loss_type: bp_MSE
+        weight: 1.0
+      - loss_type: nD_MSE
+        weight: 1.0
+      - loss_type: nD_liquid_MSE
+        weight: 1.0
+      - loss_type: dc_MSE
+        weight: 1.0
+      - loss_type: density_MSE
+        weight: 1.0
+      - loss_type: pka_a_MSE
+        weight: 1.0
+      - loss_type: pka_b_MSE
+        weight: 1.0
+      - loss_type: ST_MSE
+        weight: 1.0
+      - loss_type: vis_MSE
+        weight: 1.0
+      - loss_type: vapP_MSE
+        weight: 1.0
+
+model:
+  graph_block:
+    feature_layer:
+      atom_embedding_dim: 16
+      node_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+      edge_mlp_dims: [32, 32, 2] # (hidden, out, layers)
+      act: gelu
+    gnn_layer:
+      gnn_type: EGT
+      gnn_dims: [32, 32, 3] # (hidden, out, layers)
+      jk: cat
+      act: gelu
+      heads: 4
+      at_channels: 8
+      ffn_dims: [32, 2] # (hidden, layers)
+  readout_block:
+    input_dim: 64
+    hidden_dims: [256, 128, 16]
+    output_dim: 1
+
+training:
+  valid_interval: 5
+  ckpt_interval: 10
+  max_epoch: 1999
+
+  optimizer:
+    type: RAdam
+    lr: 5.0e-04
+    weight_decay: 1.0e-04
+  scheduler:
+    type: ReduceLROnPlateau
+    factor: 0.9
+    patience: 5
+    threshold_mode: abs
+    threshold: 1.0e-09
+    min_lr: 1.0e-05
+
+  early_stop_patience: 20
+  ignore_tolerance: 1.0e-06

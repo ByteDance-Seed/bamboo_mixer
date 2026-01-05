@@ -1,0 +1,36 @@
+json_path: "run/mono_data.json"
+save_dir: "run/mono/preprocess"
+
+key_map: # extract which datatsets (values) from hdf5 and pass to `data_cls` (keys)
+  Tm: Tm
+  Tm_mask: Tm_mask
+  bp: bp
+  bp_mask: bp_mask
+  nD: nD
+  nD_T: nD_T
+  nD_mask: nD_mask
+  nD_liquid: nD_liquid
+  nD_liquid_T: nD_liquid_T
+  nD_liquid_mask: nD_liquid_mask
+  pka_a: pka_a
+  pka_a_mask: pka_a_mask
+  pka_b: pka_b
+  pka_b_mask: pka_b_mask
+  dc: dc
+  dc_T: dc_T
+  dc_mask: dc_mask
+  ST: ST
+  ST_T: ST_T
+  ST_mask: ST_mask
+  density: density
+  density_T: density_T
+  density_mask: density_mask
+  vis: vis
+  vis_T: vis_T
+  vis_mask: vis_mask
+  vapP: vapP
+  vapP_T: vapP_T
+  vapP_mask: vapP_mask
+kwargs: # additional kwargs for `data_cls`
+  pretrain: True # For inference properties of a single molecule, this will be False
+
