@@ -36,8 +36,14 @@ This innovation provides a generative workflow to **design molecular mixture** b
 
 ## Updates
 
+- Feb 2025: Citation and README updated.
 - Jan 2025: Cleanup codebase for improved readability and better open source&data.
 - Aug 2025: First public release. Use this tagged version (`v0.0.1`) to reproduce the results reported in our manuscript.
+
+## Branches
+- `paper`: The first publicly released and archived branch with tagged version (`v0.0.1`). This branch matches the data and trained model checkpoint open-sourced on huggingface. This branch is recommended if you would like to use the pretrained checkpoint.
+- `main`: The current-and-future working branch, with significant cleanups made on the `paper` branch. This branch uses the data included in the `data_oss` folder and does not use anything from huggingface. This branch is recommended if you would like to modify the code, retrain the entire framework, or make pull-requests.
+
 
 ## Data preparation
 
@@ -109,14 +115,15 @@ This project is licensed under the [Apache License, Version 2.0](https://www.apa
 If you find Bamboo-Mixer useful for your research and applications, feel free to give us a star ⭐ or cite us using:
 
 ```bibtex
-@misc{yang2025unifiedpredictivegenerativesolution,
-      title={A Unified Predictive and Generative Solution for Liquid Electrolyte Formulation},
-      author={Zhenze Yang and Yifan Wu and Xu Han and Ziqing Zhang and Haoen Lai and Zhenliang Mu and Tianze Zheng and Siyuan Liu and Zhichen Pu and Zhi Wang and Zhiao Yu and Sheng Gong and Wen Yan},
-      year={2025},
-      eprint={2504.18728},
-      archivePrefix={arXiv},
-      primaryClass={cond-mat.mtrl-sci},
-      url={https://arxiv.org/abs/2504.18728},
+@article{yang2025unifiedpredictivegenerativesolution,
+	author = {Yang, Zhenze and Wu, Yifan and Han, Xu and Zhang, Ziqing and Lai, Haoen and Mu, Zhenliang and Zheng, Tianze and Liu, Siyuan and Pu, Zhichen and Wang, Zhi and Yu, Zhiao and Gong, Sheng and Yan, Wen},
+	date = {2026/01/28},
+	doi = {10.1038/s42256-025-01173-w},
+	isbn = {2522-5839},
+	journal = {Nature Machine Intelligence},
+	title = {A unified predictive and generative solution for liquid electrolyte formulation},
+	url = {https://doi.org/10.1038/s42256-025-01173-w},
+	year = {2026}
 }
 ```
 
