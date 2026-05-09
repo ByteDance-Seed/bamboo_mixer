@@ -116,7 +116,7 @@ class BaseTrainer:
 
         parameters = self.model.parameters()
 
-        self.optimizer = getattr(optim, optim_type)(parameters, lr=lr)
+        self.optimizer = getattr(optim, optim_type)(parameters, lr=lr, **optim_config)
 
         sched_config = self.config.training.get('scheduler', None)
 
